@@ -13,6 +13,17 @@ COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build Gemfile* ./
 COPY . .
 COPY entrypoint.sh /usr/bin/
+RUN apt update -qq && apt-get install -y lsb-release gnupg wget
+RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
+    sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+RUN apt update -qq && \
+    apt-get install -y \
+        postgresql-client
+RUN bundle install
+RUN \
+    apt-get clean autoclean && \
+    apt-get autoremove --yes && \
+    rm -rf /var/lib/{apt,dpkg,cache,log}/
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0"]

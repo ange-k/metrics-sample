@@ -13,7 +13,19 @@
 !/log/.keep
 !/tmp/.keep
 
-# Ignore Byebug command history file.
-.byebug_history
-vendor
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Ignore uploaded files in development.
+/storage/*
+!/storage/.keep
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
 log
+vendor
