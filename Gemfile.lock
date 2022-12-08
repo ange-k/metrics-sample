@@ -66,6 +66,7 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    amazing_print (1.4.0)
     bootsnap (1.15.0)
       msgpack (~> 1.2)
     builder (3.2.4)
@@ -104,6 +105,8 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.8)
+    nokogiri (1.13.9-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
     pg (1.4.5)
@@ -132,6 +135,10 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.3)
       loofah (~> 2.3)
+    rails_semantic_logger (4.11.0)
+      rack
+      railties (>= 5.1)
+      semantic_logger (~> 4.9)
     railties (7.0.4)
       actionpack (= 7.0.4)
       activesupport (= 7.0.4)
@@ -142,6 +149,8 @@ GEM
     rake (13.0.6)
     reline (0.3.1)
       io-console (~> 0.5)
+    semantic_logger (4.12.0)
+      concurrent-ruby (~> 1.0)
     thor (1.2.1)
     timeout (0.3.1)
     tzinfo (2.0.5)
@@ -152,14 +161,17 @@ GEM
     zeitwerk (2.6.6)
 
 PLATFORMS
+  x86_64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
+  amazing_print
   bootsnap
   debug
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4)
+  rails_semantic_logger
   tzinfo-data
 
 RUBY VERSION
