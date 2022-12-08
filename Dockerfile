@@ -26,4 +26,6 @@ RUN \
     rm -rf /var/lib/{apt,dpkg,cache,log}/
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
+ENV RAILS_ENV development
+ENV RAILS_LOG_TO_STDOUT true
 CMD ["rails", "server", "-b", "0.0.0.0"]

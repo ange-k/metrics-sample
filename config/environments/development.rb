@@ -54,8 +54,14 @@ Rails.application.configure do
   config.active_record.verbose_query_logs = true
 
   # logger
-  ## 特にdevで有効にしたいもの
-  config.rails_semantic_logger.started    = true
-  config.rails_semantic_logger.processing = true
-  config.rails_semantic_logger.rendered   = true
+  config.rails_semantic_logger.format = :json
+  config.log_tags = {
+    request_id: :request_id,
+    ip:         :remote_ip,
+  }
+  if ENV["RAILS_LOG_TO_STDOUT"].present?
+    $stdout.sync = true
+    config.rails_semantic_logger.add_file_appender = false
+    config.semantic_logger.add_appender(io: $stdout, formatter: :json)
+  end
 end

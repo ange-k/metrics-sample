@@ -77,8 +77,4 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  # logger
-  config.rails_semantic_logger.quiet_assets = true
-  config.rails_semantic_logger.add_file_appender = false
 end
