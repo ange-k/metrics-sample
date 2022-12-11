@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:15.1
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: 'admin'
+      POSTGRES_PASSWORD: 'password'
+  web:
+    image: 991180925719.dkr.ecr.ap-northeast-1.amazonaws.com/fluent-sample:dbe3570
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
