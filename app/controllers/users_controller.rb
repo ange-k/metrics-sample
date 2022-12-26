@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def show
     logger.info(LogFormatter.athena({
         "user_id": @user.id,
-        "data": 'hoge'
+        "data": params[:query]
       },
                         "user_show"
     ))
